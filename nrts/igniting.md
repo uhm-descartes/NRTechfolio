@@ -1,12 +1,12 @@
 ---
-layout: essay
+layout: nrt
 type: nrt
-title: "Igniting the fire"
+title: "NRT Activities"
 # All dates must be YYYY-MM-DD format!
 date: 2015-08-26
 published: true
 labels:
-  - Software Engineering
+  - Activities
   - Learning
 ---
 

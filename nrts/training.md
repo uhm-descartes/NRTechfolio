@@ -1,7 +1,7 @@
 ---
 layout: nrt
 type: nrt
-title: "NRT training"
+title: "NRT training plan"
 # All dates must be YYYY-MM-DD format!
 date: 2016-02-06
 published: true
