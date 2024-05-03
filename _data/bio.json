@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Molly Maluhia",
-    "label": "Student",
+    "label": "NRT Trainee",
     "picture": "https://github.com/kambergjohnson.png",
     "email": "molly@hawaii.edu",
     "phone": "808-333-4444",
     "website": "https://mmaluhia.github.io",
-    "summary": "I am studying for a B.S. in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2024.",
+    "summary": "I am an NRT DESCARTS trainee studying for a MS in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2024.",
     "location": { "address": "", "postalCode": "96822", "city": "Honolulu", "countryCode": "USA", "region": "Hawaii" },
     "profiles": [
       { "network": "github", "username": "mmaluhia", "url": "http://github.com/changeme" },
@@ -16,7 +16,7 @@
     ]
   },
   "interests": [
-    { "name": "Interactive media" },
+    { "name": "Neuromorphic Analytics" },
     { "name": "Neuromorphic Computing" },
     { "name": "Quantum Computing" },
     { "name": "Robotics" },
@@ -36,7 +36,7 @@
     {
       "institution": "University of Hawaii, Honolulu, HI",
       "area": "Computer Science (expected Spring, 2018)",
-      "studyType": "B.S.",
+      "studyType": "M.S.",
       "startDate": "2013-09-01",
       "endDate": "Present",
       "courses": [
