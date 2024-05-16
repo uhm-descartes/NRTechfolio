@@ -31,6 +31,7 @@ On the "Create a new repository" screen, fill in a name for your new repository 
 * Go to [Settings/Pages](../../settings/pages)
 * Find the Branch section
 * Choose the 'main' branch.
+* Note the pages URL. It should be somegthing like `https://awjans.github.io/NRTechfolio/`
 
 ## Edit Config YAML
 
@@ -53,3 +54,9 @@ On the "Create a new repository" screen, fill in a name for your new repository 
 
 * In the [projects](projects) folder
 * Rename/Edit or Replace the *.md files
+
+## View and Post Portfolio
+
+* Use the URL in `_config.yml` to view your portfolio
+* Post your URL to `# nrtechfolios` on Discord
+* Follow-up to ensure you portfolio card appears in the [NRT Portfolio Gallery](https://descartes.manoa.hawaii.edu/nrt-portfolios/)
