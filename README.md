@@ -24,11 +24,15 @@ Find the green "Use this template" button in the top left of the screen. Click t
 
 On the "Create a new repository" screen, fill in a name for your new repository in the middle of the page. It is suggested to use "NRTechfolio." Click the green "Create repository" button on the bottom right. Github will then create your new repository using the template and redirect you to the new repository when finished.
 
+## Create a New Codespace
+
+On the "<> Code" tab, find the green "<> Code" button. Click that button and select the "Codespaces" tab. Find and click the "Create codespace on main" button, and Github will a space for you to edit your repository without downloading software to your computer. The codespace will be a website named something like "https://tangerine-parakeet-w47p5rppp725xgx.github.dev/", which you can bookmark for fast access later. The README.md file containing these instructions will be previewed so you can continue to follow along.
+
 # Setup Instructions
 
 ## Turn on Pages
 
-* Go to [Settings/Pages](../../settings/pages)
+* Go to [Settings/Pages](../../settings/pages) from your GitHub Repository, not the Codespace.
 * Find the Branch section
 * Choose the 'main' branch.
 
