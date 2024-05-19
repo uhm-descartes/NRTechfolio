@@ -9,5 +9,34 @@ labels:
   - Activities
   - Learning
 ---
+<div id="table-container" class="container"></div>
 
-<img class="rounded float-start pe-4" src="./activities.png">
+<script type="text/javascript">
+      const query = 'SELECT * WHERE C = "{{ site.data.bio.basics.email }}"';
+      fetch(`https://docs.google.com/spreadsheets/d/1cYoC5aqpM6r2DceIvGN8y0H5AK1b-n1CC-yX-NmWUtI/gviz/tq?tq=${query}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(responseText => {
+          let jsonString = responseText.match(/\{.*\}/)[0];
+          let jsonData = JSON.parse(jsonString);
+          let data = jsonData.table.rows.map(row => row.c.map(cell => cell.f))[0];
+          let headers = jsonData.table.cols.map(col => col.label);
+            tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Activity</th><th>Completed Date</th></tr></thead>';
+            for(let i = 3; i < headers.length; i++) {
+                if(data[i] === undefined) {
+                    continue;
+                }
+              tableHtml += `<tr><td>${headers[i]}</td><td>${data[i]}</td></tr>`;
+            }
+            tableHtml += '<tbody></table>';
+            document.getElementById('table-container').innerHTML = tableHtml;
+        })
+        .catch(error => {
+          console.error('There was a problem fetching the data:', error);
+        });
+
+    </script>
