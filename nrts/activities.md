@@ -9,6 +9,7 @@ labels:
   - Activities
   - Learning
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json5/2.2.3/index.min.js" integrity="sha512-44jdhc+R2TFfzBflS3/dGNEABiNUxBkkrqwO7GWTvGsj3HkQNr3GESvI9PUvAxmqxSnTosR0Ij9y3+o+6J1hig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div id="table-container" class="container"></div>
 
 <script type="text/javascript">
@@ -21,8 +22,9 @@ labels:
           return response.text();
         })
         .then(responseText => {
+console.log(responseText);
           let jsonString = responseText.match(/\{.*\}/)[0];
-          let jsonData = JSON.parse(jsonString);
+          let jsonData = JSON5.parse(jsonString);
           let data = jsonData.table.rows.map(row => row.c.map(cell => cell.f))[0];
           let headers = jsonData.table.cols.map(col => col.label);
             tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Activity</th><th>Completed Date</th></tr></thead>';
