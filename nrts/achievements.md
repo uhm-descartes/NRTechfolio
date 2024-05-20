@@ -35,23 +35,19 @@ function handleQueryResponse(response) {
 
     var data = response.getDataTable();
     var jsonData = JSON.parse(data.toJSON());
-console.log(jsonData);
 
- let headers = jsonData.cols.map(col => col.label);
+    let headers = jsonData.cols.map(col => col.label);
 
-    tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Badge</th><th>Awarded</th></tr></thead>';
+    let tableHtml ='<div class="row">';
 
-for(let i in jsonData.rows) {
-    let row = jsonData.rows[i];
-    let badge = row.c[0].v;
-    let date = row.c[1].f;
-      tableHtml += `<tr><td><img src="https://img.shields.io/badge/${badge}-Success-brightgreen" alt="${badge} Badge" /></td><td>${date}</td></tr>`;
-
-}
-   
-
-
-    tableHtml += '<tbody></table>';
+    for(let i in jsonData.rows) {
+        let row = jsonData.rows[i];
+        let badge = row.c[0].v;
+        let date = row.c[1].f;
+          tableHtml += ` <div class="col-md-6"><img src="https://img.shields.io/badge/${badge}-Success-brightgreen" alt="${badge} Badge" /><br>${date}</br></div>`;
+    
+    }
+    tableHtml +='</div>';
     document.getElementById('table-container').innerHTML = tableHtml;
 
 }
