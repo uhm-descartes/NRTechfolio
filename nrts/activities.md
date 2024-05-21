@@ -67,7 +67,7 @@ function handleQueryResponse(response) {
     var data = response.getDataTable();
     var jsonData = JSON.parse(data.toJSON());
 
-  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell.f))[0];
+  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell ? cell.f : ''))[0];
   let headers = jsonData.cols.map(col => col.label);
     tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Activity</th><th>Completed Date</th></tr></thead>';
     for(let i = 3; i < headers.length; i++) {

@@ -39,7 +39,7 @@ function handleQueryResponse(response) {
     var data = response.getDataTable();
     var jsonData = JSON.parse(data.toJSON());
 
-  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell.v))[0];
+  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell ? cell.v : ''))[0];
   let headers = jsonData.cols.map(col => col.label);
     const primaryMentorIndex = headers.indexOf("Primary Mentor");
     const secondaryMentorIndex = headers.indexOf("Secondary Mentor");
