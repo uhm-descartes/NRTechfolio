@@ -16,20 +16,20 @@ You will need to [login](https://github.com/login) to GitHub or [create an accou
 
 Search for [uhm-descartes/NRTechfolio](https://github.com/uhm-descartes/NRTechfolio) or follow the provided [link](https://github.com/uhm-descartes/NRTechfolio).
 
-## Use the Template
+## Use the Fork Luke!
 
-Find the green "Use this template" button in the top left of the screen. Click that button and select "[Create a new repository](https://github.com/new?template_name=NRTechfolio&template_owner=uhm-descartes)" from the dropdown options.
+DO NOT use the green "Use this template" button in the top left of the screen. Instead, press the "Fork" button three buttons over from end. Click that button and select "[+ Create a new fork](https://github.com/new?template_name=NRTechfolio&template_owner=uhm-descartes)" from the dropdown options.
 
 ## Create a New Repository
 
-On the "Create a new repository" screen, fill in a name for your new repository in the middle of the page. It is suggested to use "NRTechfolio." Click the green "Create repository" button on the bottom right. Github will then create your new repository using the template and redirect you to the new repository when finished.
+On the "Create a new repository" screen, fill in a name for your new repository in the middle of the page. It is suggested to use "NRTechfolio." Click the green "Create fork" button on the bottom right. Github will then create your new repository using the template and redirect you to the new repository when finished.
 
 ## Turn on Pages
 
 * Go to [Settings/Pages](../../settings/pages) from your GitHub Repository, not the Codespace.
 * Find the Branch section
 * Choose the 'main' branch.
-* Note the pages URL. It should be somegthing like `https://awjans.github.io/NRTechfolio/`. This is the URL to your published NRTechfolio and the value will be needed when editing the Config YAML file later.
+* Note the pages URL. It should be something like `https://awjans.github.io/NRTechfolio/`. This is the URL to your published NRTechfolio and the value will be needed when editing the Config YAML file later.
 
 ## Create a New Codespace
 

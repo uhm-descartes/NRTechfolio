@@ -3,7 +3,7 @@ layout: nrt
 type: nrt
 title: "Activities"
 # All dates must be YYYY-MM-DD format!
-date: 2015-08-26
+date:
 published: true
 labels:
   - Activities
@@ -71,7 +71,7 @@ function handleQueryResponse(response) {
   let headers = jsonData.cols.map(col => col.label);
     tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Activity</th><th>Completed Date</th></tr></thead>';
     for(let i = 3; i < headers.length; i++) {
-        if(tabledata[i] === undefined) {
+        if(tabledata[i] === undefined || tabledata[i] === '') {
             continue;
         }
       tableHtml += `<tr><td>${headers[i]}</td><td>${tabledata[i]}</td></tr>`;

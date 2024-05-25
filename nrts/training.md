@@ -3,7 +3,7 @@ layout: nrt
 type: nrt
 title: "Training Plan"
 # All dates must be YYYY-MM-DD format!
-date: 2016-02-06
+date:
 published: true
 labels:
   - Training
@@ -11,8 +11,8 @@ labels:
 <img width="200px" class="rounded float-start pe-4" src="../img/difficulty/degree_difficulty.jpg">
 
 # NRT DESCARTES training plan
-<span id="primary_mentor_span" class="badge bg-primary">Primary Mentor: </span>
-<span id="secondary_mentor_span" class="badge bg-secondary">Secondary Mentor: </span>
+<span id="primary_advisor_span" class="badge bg-primary">Primary Advisor: </span>
+<span id="secondary_advisor_span" class="badge bg-secondary">Secondary Advisor: </span>
 <hline>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -41,9 +41,9 @@ function handleQueryResponse(response) {
 
   let tabledata = jsonData.rows.map(row => row.c.map(cell => cell ? cell.v : ''))[0];
   let headers = jsonData.cols.map(col => col.label);
-    const primaryMentorIndex = headers.indexOf("Primary Mentor");
-    const secondaryMentorIndex = headers.indexOf("Secondary Mentor");
-    primary_mentor_span.innerHTML += tabledata[primaryMentorIndex];
-    secondary_mentor_span.innerHTML += tabledata[secondaryMentorIndex];
+    const primaryAdvisorIndex = headers.indexOf("Primary Advisor");
+    const secondaryAdvisorIndex = headers.indexOf("Secondary Advisor");
+    primary_advisor_span.innerHTML += tabledata[primaryAdvisorIndex];
+    secondary_advisor_span.innerHTML += tabledata[secondaryAdvisorIndex];
 }
 </script>

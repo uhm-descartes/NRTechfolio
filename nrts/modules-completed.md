@@ -3,7 +3,7 @@ layout: nrt
 type: nrt
 title: "Modules Completed"
 # All dates must be YYYY-MM-DD format!
-date: 2015-09-08
+date:
 published: true
 labels:
   - Modules
