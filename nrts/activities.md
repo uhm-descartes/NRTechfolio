@@ -65,16 +65,19 @@ function handleQueryResponse(response) {
     }
 
     var data = response.getDataTable();
-    var jsonData = JSON.parse(data.toJSON());
+    var numRows = data.getNumberOfRows();
 
-  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell ? cell.f : ''))[0];
-  let headers = jsonData.cols.map(col => col.label);
-    tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Activity</th><th>Completed Date</th></tr></thead>';
-    for(let i = 3; i < headers.length; i++) {
-        if(tabledata[i] === undefined || tabledata[i] === '') {
-            continue;
+    tableHtml = '<table class="table table-bordered"><tbody><thead><tr><th>Year</th><th>Activity</th><th>Completed Date</th></tr></thead>';
+    for(let row = 0; row < numRows; row++) {
+        let activity_year = data.getValue(row,0);
+        for(let i = 3; i < data.getNumberOfColumns(); i++) {
+            let activity = data.getColumnLabel(i);
+            let completedDate = data.getValue(row,i);
+            if(completedDate === undefined || completedDate === '') {
+                continue;
+            }
+          tableHtml += `<tr><td>${activity_year}</td><td>${activity}</td><td>${completedDate.toLocaleDateString()}</td></tr>`;
         }
-      tableHtml += `<tr><td>${headers[i]}</td><td>${tabledata[i]}</td></tr>`;
     }
     tableHtml += '<tbody></table>';
     document.getElementById('table-container').innerHTML = tableHtml;

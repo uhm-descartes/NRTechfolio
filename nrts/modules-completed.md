@@ -35,7 +35,6 @@ function handleQueryResponse(response) {
 
       var data = response.getDataTable();
       var numRows = data.getNumberOfRows();
-      var results = [];
             
         (async () => {
         for (var i = 0; i < numRows; i++) {

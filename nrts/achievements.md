@@ -19,9 +19,9 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawTable);
 
 function drawTable() {
-    var queryString = encodeURIComponent(`SELECT C,D WHERE B = "{{ site.data.bio.basics.email }}"`);
+    var queryString = encodeURIComponent(`SELECT C,D,E WHERE B = "{{ site.data.bio.basics.email }}"`);
     var query = new google.visualization.Query(
-        `https://docs.google.com/spreadsheets/d/1cYoC5aqpM6r2DceIvGN8y0H5AK1b-n1CC-yX-NmWUtI/gviz/tq?sheet=Badges&tq=${queryString}`
+        `https://docs.google.com/spreadsheets/d/1cYoC5aqpM6r2DceIvGN8y0H5AK1b-n1CC-yX-NmWUtI/gviz/tq?sheet=Achievements&tq=${queryString}`
         );
     
     query.send(handleQueryResponse);
@@ -33,20 +33,18 @@ function handleQueryResponse(response) {
         return;
     }
 
-    var data = response.getDataTable();
-    var jsonData = JSON.parse(data.toJSON());
-
-    let headers = jsonData.cols.map(col => col.label);
-
     let tableHtml ='<div class="row">';
 
-    for(let i in jsonData.rows) {
-        let row = jsonData.rows[i];
-        let badge = row.c[0].v;
-        let date = row.c[1].f;
-          tableHtml += ` <div class="col-md-6"><img src="https://img.shields.io/badge/${badge}-Success-brightgreen" alt="${badge} Badge" /><br>${date}</br></div>`;
+      var data = response.getDataTable();
+      var numRows = data.getNumberOfRows();
+
+      for (var i = 0; i < numRows; i++) {
+        var badge = data.getValue(i, 0);
+        var date = data.getValue(i, 1);
+        var URL = data.getValue(i, 2);
+          tableHtml += ` <div class="col-md-6"><a href="${URL}"><img src="https://img.shields.io/badge/${badge}-Success-brightgreen" alt="${badge} Badge" /></a><br>${date.toLocaleDateString()}</br></div>`;
     
-    }
+        }
     tableHtml +='</div>';
     document.getElementById('table-container').innerHTML = tableHtml;
 

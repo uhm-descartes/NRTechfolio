@@ -34,7 +34,6 @@ function handleQueryResponse(response) {
 
       var data = response.getDataTable();
       var numRows = data.getNumberOfRows();
-      var results = [];
 
       for (var i = 0; i < numRows; i++) {
         var student = data.getValue(i, 0);
@@ -50,8 +49,6 @@ function handleQueryResponse(response) {
     <p class="card-text">Secondary Advisor: ${secondaryAdvisor}</p>
   </div>
 `;
-        results.push({student: student, primaryAdvisor: primaryAdvisor, secondaryAdvisor: secondaryAdvisor });
       }
-console.log(results);
 }
 </script>

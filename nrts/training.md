@@ -8,12 +8,22 @@ published: true
 labels:
   - Training
 ---
-<img width="200px" class="rounded float-start pe-4" src="../img/difficulty/degree_difficulty.jpg">
 
-# NRT DESCARTES training plan
-<span id="primary_advisor_span" class="badge bg-primary">Primary Advisor: </span>
-<span id="secondary_advisor_span" class="badge bg-secondary">Secondary Advisor: </span>
-<hline>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img width="200px" class="rounded float-start pe-4" src="../img/difficulty/degree_difficulty.jpg">
+        </div>
+        <div class="col-md-6">
+            <span id="primary_advisor_span" class="badge bg-primary">Primary Advisor: </span>
+            <span id="secondary_advisor_span" class="badge bg-secondary">Secondary Advisor: </span>
+        </div>
+    </div>
+<hrule></hrule>
+    <div class="row" id="plan_div">
+    </div>
+</div>
+
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -37,13 +47,24 @@ function handleQueryResponse(response) {
     }
 
     var data = response.getDataTable();
+    var numRows = data.getNumberOfRows();
     var jsonData = JSON.parse(data.toJSON());
+    let primaryAdvisorIndex = data.getColumnIndex("Primary Advisor");
+    let secondaryAdvisorIndex = data.getColumnIndex("Secondary Advisor");
 
-  let tabledata = jsonData.rows.map(row => row.c.map(cell => cell ? cell.v : ''))[0];
-  let headers = jsonData.cols.map(col => col.label);
-    const primaryAdvisorIndex = headers.indexOf("Primary Advisor");
-    const secondaryAdvisorIndex = headers.indexOf("Secondary Advisor");
-    primary_advisor_span.innerHTML += tabledata[primaryAdvisorIndex];
-    secondary_advisor_span.innerHTML += tabledata[secondaryAdvisorIndex];
+    primary_advisor_span.innerHTML += data.getValue(0, primaryAdvisorIndex);
+    secondary_advisor_span.innerHTML += data.getValue(0, secondaryAdvisorIndex);
+
+    // get the plan data after Secondary Advisor column
+    for(let i = secondaryAdvisorIndex + 1; i < data.getNumberOfColumns(); i++) {
+        let plan_item = data.getColumnLabel(i);
+        let plan_item_data = data.getValue(0, i);
+        if(plan_item_data === null || plan_item_data === "") {
+            continue;
+        }
+console.log(plan_item_data);
+        plan_div.innerHTML += `<div class="card">${plan_item_data}</div>`;
+}
+
 }
 </script>
