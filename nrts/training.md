@@ -19,7 +19,6 @@ labels:
             <span id="secondary_advisor_span" class="badge bg-secondary">Secondary Advisor: </span>
         </div>
     </div>
-<hrule></hrule>
     <div class="row" id="plan_div">
     </div>
 </div>
