@@ -1,0 +1,57 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation. 
+# Doc: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
+# Workflow to synchronize the local repository with the UHM DESCARTES MOREA Template.
+name: Synchronize with Template
+
+on:
+  schedule:
+    - cron:  "0 1 * * MON"
+  # Allow this workflow to be manually triggered
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  actions: write
+  contents: write
+  id-token: write
+  pull-requests: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "template-sync"
+  cancel-in-progress: false
+
+# Common Environment Variables for all Steps
+env:
+  SOURCE_BRANCH: main
+  SOURCE_REPOSITORY: uhm-descartes/NRTechfolio
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Doc: https://github.com/marketplace/actions/checkout
+      - name: Checkout Current Repository
+        id: checkout
+        uses: actions/checkout@v4
+        if: github.repository != env.SOURCE_REPOSITORY
+        with:
+          token: ${{ secrets.DESCARTES_TOKEN }}
+
+      # Doc: https://github.com/marketplace/actions/actions-template-sync
+      - name: Synchronize
+        id: synchronize
+        uses: AndreasAugustin/actions-template-sync@v1.1.8
+        if: github.repository != env.SOURCE_REPOSITORY
+        with:
+          github_token: ${{ secrets.DESCARTES_TOKEN }}
+          source_repo_path: ${{ env.SOURCE_REPOSITORY }}
+          upstream_branch: ${{ env.SOURCE_BRANCH }}
+          pr_title: "[actions-template-sync] Upstream template update"
+          pr_commit_msg: "chore(template): upstream template update"
